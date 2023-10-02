@@ -29,7 +29,7 @@ function Index() {
                         </a>
                     </div>
                 </div>
-                <Image alt="electotec logo" width={200} height={200} src={"/logo.png"} className="mt-2"/>
+                <Image alt="electotec logo" width={175} height={175} src={"/logo.svg"} className="mt-2 max-h-full"/>
                 <button
                     className="bg-red-600 font-semibold transform transition duration-500 hover:scale-105 text-white py-2 px-3 rounded-lg absolute right-0">
                     شناخت الکتوتک
