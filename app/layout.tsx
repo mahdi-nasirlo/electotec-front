@@ -2,6 +2,8 @@ import './globals.css'
 import type {Metadata} from 'next'
 import Header from "@/app/components/layouts/header";
 import MainContainer from "@/app/components/layouts/main-container";
+import StyledComponentsRegistry from "@/lib/antd-registry";
+import Providers from "@/providers/query-client-provider";
 
 export const metadata: Metadata = {
     title: 'Create Next App',
@@ -16,10 +18,14 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body>
-        <Header/>
-        <MainContainer>
-            {children}
-        </MainContainer>
+        <Providers>
+            <StyledComponentsRegistry>
+                <Header/>
+                <MainContainer>
+                    {children}
+                </MainContainer>
+            </StyledComponentsRegistry>
+        </Providers>
         </body>
         </html>
     )

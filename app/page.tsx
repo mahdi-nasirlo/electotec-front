@@ -1,7 +1,17 @@
 import Image from "next/image";
 import {ArrowSmallDownIcon} from "@heroicons/react/20/solid";
+import {dehydrate, Hydrate} from "@tanstack/react-query";
+import Articles, {getPosts} from "@/app/components/articles";
+import getQueryClient from "@/lib/query-client";
 
-export default function Home() {
+export default async function Home() {
+
+
+    const queryClient = getQueryClient()
+    await queryClient.prefetchQuery(['posts'], getPosts)
+    const dehydratedState = dehydrate(queryClient)
+
+
     return (
         <>
             <section className="bg-white relative">
@@ -86,11 +96,17 @@ export default function Home() {
             </section>
 
             <section>
+
                 <div className="p-9 bg-red-600 text-white rounded-lg my-10 flex items-center justify-center">
                     <h3 className="text-center font-semibold text-5xl mt-3">
                         مشاوره تخصصی کالا و خدمات برقی و روشنایی
                     </h3>
                 </div>
+
+                <Hydrate state={dehydratedState}>
+                    <Articles/>
+                </Hydrate>
+
             </section>
         </>
     )
