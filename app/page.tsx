@@ -39,7 +39,7 @@ export default function Home() {
                             <Image
                                 width={5000}
                                 height={5000}
-                                src={"/images/banner1.jpg"}
+                                src={`${process.env.NEXT_PUBLIC_STATIC_URL}/images/banner1.jpg`}
                                 alt=""
                                 className="rounded-lg w-full h-full object-cover"
                             />
@@ -49,7 +49,7 @@ export default function Home() {
                                 width={5000}
                                 height={5000}
                                 alt=""
-                                src={"/images/banner2.jpg"}
+                                src={`${process.env.NEXT_PUBLIC_STATIC_URL}/images/banner2.jpg`}
                                 className="rounded-lg w-full h-full object-cover"
                             />
                         </div>
@@ -58,7 +58,7 @@ export default function Home() {
                                 width={5000}
                                 height={5000}
                                 alt=""
-                                src={"/images/banner3.jpg"}
+                                src={`${process.env.NEXT_PUBLIC_STATIC_URL}/images/banner3.jpg`}
                                 className="rounded-lg w-full h-full object-cover"
                             />
                         </div>
@@ -67,7 +67,7 @@ export default function Home() {
                                 width={5000}
                                 height={5000}
                                 alt=""
-                                src={"/images/banner4.jpg"}
+                                src={`${process.env.NEXT_PUBLIC_STATIC_URL}/images/banner4.jpg`}
                                 className="rounded-lg w-full h-full object-cover"
                             />
                         </div>
@@ -81,7 +81,7 @@ export default function Home() {
             <section className="mt-8 h-[80vh] w-full">
                 <video
                     className="w-full rounded-2xl h-full border"
-                    src="https://electotec-front.storage.iran.liara.space/static/video/9f0c489ed087cb7616d8ec0a1eb2a17814906729-720p.mp4"
+                    src={`${process.env.NEXT_PUBLIC_STATIC_URL}/video/info.mp4`}
                     controls/>
             </section>
 
