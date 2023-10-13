@@ -1,9 +1,9 @@
 import './globals.css'
 import type {Metadata} from 'next'
-import Header from "@/app/components/layouts/header";
-import MainContainer from "@/app/components/layouts/main-container";
 import StyledComponentsRegistry from "@/lib/antd-registry";
 import Providers from "@/providers/query-client-provider";
+import Header from "@/components/layouts/header";
+import MainContainer from "@/components/layouts/main-container";
 
 export const metadata: Metadata = {
     title: 'Create Next App',

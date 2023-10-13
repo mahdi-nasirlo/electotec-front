@@ -16,7 +16,8 @@
     "axios": "^1.5.1",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-multi-carousel": "^2.8.4"
   },
   "devDependencies": {
     "@types/node": "latest",

@@ -1,5 +1,7 @@
+import {ImageInterface} from "@/response-interface/wrapper-interface";
+
 export interface Post {
-    title: string,
-    image: string,
-    category: string,
+    Title: string,
+    Content: string,
+    image?: ImageInterface
 }

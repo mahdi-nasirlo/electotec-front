@@ -3,6 +3,7 @@ import type {ThemeConfig} from 'antd';
 const theme: ThemeConfig = {
     token: {
         fontSize: 16,
+        fontFamily: "IRANSansfanum",
         colorPrimary: '#52c41a',
     },
 };

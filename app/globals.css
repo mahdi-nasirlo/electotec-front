@@ -1,5 +1,53 @@
 @import "components/font.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/*react multi carousel */
+.react-multi-carousel-dot-list {
+    @apply hidden !important;
+}
+
+.react-multiple-carousel__arrow--right::before, .react-multiple-carousel__arrow--left::before {
+    content: unset !important;
+}
+
+.react-multiple-carousel__arrow {
+    @apply bg-white shadow-2xl w-1 border-solid border border-gray-300 !important
+}
+
+.react-multiple-carousel__arrow button svg {
+    @apply text-red-500 !important
+}
+
+.react-multiple-carousel__arrow--right {
+    @apply right-0.5 !important
+}
+
+.react-multiple-carousel__arrow--left {
+    @apply left-0.5 !important
+}
+
+/*react multi carousel */
+
+.ant-input:hover {
+    @apply bg-white border-0 !important
+}
+
+.search-input span input {
+    @apply pb-2 !important
+}
+
+/*category-section-card*/
+.category-section-card {
+    @apply flex flex-row !important
+}
+
+.category-section-card div {
+    @apply bg-white p-5 m-5 h-48 w-48 rounded-lg !important
+}
+
+.category-section-card div svg {
+    @apply text-neutral-700 h-full w-full  !important
+}
