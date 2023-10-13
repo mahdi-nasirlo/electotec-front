@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from "next/image";
-import HeaderContainer from "@/app/components/layouts/header/header-container";
-import MainContainer from "@/app/components/layouts/main-container";
+import HeaderContainer from "@/components/layouts/header/header-container";
+import MainContainer from "@/components/layouts/main-container";
 
 function Index() {
     return (

@@ -2,22 +2,20 @@
 
 import React from 'react';
 import {useQuery} from "@tanstack/react-query";
-import baseAxios from "@/lib/base-axois";
-import {AxiosResponse} from "axios";
+import {getFetcher} from "@/lib/fetch-functions/getFetcher";
+import {WrapperInterface} from "@/response-interface/wrapper-interface";
+import {Post} from "@/response-interface/post";
 
-
-export const getPosts = async () => {
-
-    const res: AxiosResponse = await baseAxios.get("/posts")
-
-    return res.data
-}
 
 function Articles() {
 
-    const {data: articles, isLoading: isLoadingArticles, isError: isErrorArticles} = useQuery<any[]>({
+    const {
+        data: articles,
+        isLoading: isLoadingArticles,
+        isError: isErrorArticles
+    } = useQuery<WrapperInterface<Post[]>>({
         queryKey: ["posts"],
-        queryFn: getPosts
+        queryFn: () => getFetcher("/api/posts")
     })
 
     if (isErrorArticles) {
@@ -27,7 +25,7 @@ function Articles() {
     return (
         <div className="border border-red-600 rounded-lg">
             {isLoadingArticles && <div>is loading....</div>}
-            {!isLoadingArticles && articles.map((item, index) => <div key={index}>{item.title.rendered}</div>)}
+            {!isLoadingArticles && articles.data.map((item, index) => <div key={index}>{item.title}</div>)}
         </div>
     );
 }
