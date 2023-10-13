@@ -1,7 +1,7 @@
 export interface WrapperInterface<T> {
     data: {
         id: number,
-        attributes: T & Image
+        attributes: T & ImageInterface
     }[],
 }
 
