@@ -1,36 +1,28 @@
 "use client"
 
 import React from 'react';
-import {useQuery} from "@tanstack/react-query";
-import {getFetcher} from "@/lib/fetch-functions/getFetcher";
-import {WrapperInterface} from "@/response-interface/wrapper-interface";
-import {Post} from "@/response-interface/post";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import {ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/20/solid";
+import useBlogPost from "@/hook/api/blog/useBlogPost";
 import ArticleCard from "@/app/components/article-carousel/article-card";
 
 function Articles() {
 
-    const {
-        data: articles,
-        isLoading: isLoadingArticles,
-        isError: isErrorArticles
-    } = useQuery<WrapperInterface<Post>>({
-        queryKey: ["posts"],
-        queryFn: () => getFetcher("/api/blog-posts?populate=*")
-    })
+    const blogPost = useBlogPost()
 
-    if (isErrorArticles) {
+    const {data, isError, isLoading} = blogPost.getAll
+
+    if (isError) {
         return <div>is loading...</div>
     }
 
     return (
         <div className="border border-2 border-red-600 rounded-lg p-3 mb-6 mt-4">
             <Carousel
-                swipeable={false}
-                draggable={false}
-                showDots={true}
+                swipeable={true}
+                draggable={true}
+                showDots={false}
                 responsive={responsive}
                 ssr={true} // means to render carousel on server-side.
                 infinite={true}
@@ -38,7 +30,7 @@ function Articles() {
                 autoPlaySpeed={1000}
                 keyBoardControl={true}
                 customTransition="all .5"
-                transitionDuration={500}
+                transitionDuration={5000}
                 containerClass="carousel-container"
                 removeArrowOnDeviceType={["tablet", "mobile"]}
                 deviceType={"Carousel"}
@@ -51,11 +43,10 @@ function Articles() {
                     className="react-multiple-carousel__arrow react-multiple-carousel__arrow--right"><ChevronRightIcon
                     height={48} width={48} className="text-neutral-600 w-full h-full"/></button>}
             >
-                {!isErrorArticles && !isLoadingArticles && articles?.data?.map((post, index) => <ArticleCard
-                    post={post.attributes}
-                    key={index}/>)}
 
-                {isLoadingArticles && Array.from(new Array(15)).map((_, i) =>
+                {!isError && !isLoading && data?.data.map((post, index) => <ArticleCard key={index} post={post}/>)}
+
+                {isLoading && Array.from(new Array(15)).map((_, i) =>
                     <div
                         className="object-cover m-2"
                         key={i}
