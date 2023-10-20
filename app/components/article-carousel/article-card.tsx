@@ -12,7 +12,7 @@ function ArticleCard({post}: {
 
     const imageData = attributes.image.data.attributes
 
-    const category = attributes.category.data?.attributes
+    const category = attributes.blog_category.data?.attributes
 
     return (
         <div className="m-2 drop-shadow  border-[0.5px] rounded-lg">
