@@ -15,7 +15,8 @@ export type GetAllDataPost = WrapperInterface<GetDataPost>
 export interface GetDataPost {
     title: string,
     content: string
-    blog_category: GetDataCategory
+    blog_category?: GetDataCategory,
+    tags?: WrapperInterface<{ title: string }>
 }
 
 export interface GetDataCategory {

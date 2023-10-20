@@ -2,7 +2,7 @@ import React from 'react';
 import {GetDataPost} from "@/hook/api/blog/useBlogPost";
 import {WrapperItemInterface} from "@/response-interface/wrapper-interface";
 import Image from "next/image";
-import {Tag} from "antd";
+import {Tag, Typography} from "antd";
 
 function ArticleCard({post}: {
     post: WrapperItemInterface<GetDataPost>
@@ -12,7 +12,9 @@ function ArticleCard({post}: {
 
     const imageData = attributes.image.data.attributes
 
-    const category = attributes.blog_category.data?.attributes
+    const category = attributes?.blog_category?.data?.attributes
+
+    const tags = attributes.tags?.data.map((tag) => tag.attributes.title)
 
     return (
         <div className="m-2 drop-shadow  border-[0.5px] rounded-lg">
@@ -29,8 +31,9 @@ function ArticleCard({post}: {
                 <h6 className="text-right text-md font-medium mt-3 mb-5">
                     {attributes.title}
                 </h6>
-                <div className="text-right text-gray-400 text-sm font-light">
-                    برسی و تحلیل | معرفی محصول
+                <div className="text-right  flex justify-end">
+                    {tags?.map((item) => <> <Typography
+                        className="mr-2 text-gray-400 text-sm font-light border-l pl-2">{item}</Typography> </>)}
                 </div>
             </div>
         </div>

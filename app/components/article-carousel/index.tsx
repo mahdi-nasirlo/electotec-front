@@ -1,11 +1,11 @@
 "use client"
 
 import React from 'react';
-import Carousel from 'react-multi-carousel';
+import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
-import {ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/20/solid";
 import useBlogPost from "@/hook/api/blog/useBlogPost";
 import ArticleCard from "@/app/components/article-carousel/article-card";
+import {ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/20/solid";
 
 function Articles() {
 
@@ -22,20 +22,20 @@ function Articles() {
             <Carousel
                 swipeable={true}
                 draggable={true}
-                showDots={false}
+                // showDots={true}
                 responsive={responsive}
-                ssr={true} // means to render carousel on server-side.
+                ssr={true}
                 infinite={true}
-                autoPlay={true}
-                autoPlaySpeed={1000}
+                // autoPlay={true}
+                autoPlaySpeed={5000}
                 keyBoardControl={true}
                 customTransition="all .5"
-                transitionDuration={5000}
-                containerClass="carousel-container"
+                // transitionDuration={5000}
+                // containerClass="carousel-container"
                 removeArrowOnDeviceType={["tablet", "mobile"]}
-                deviceType={"Carousel"}
-                dotListClass="custom-dot-list-style"
-                itemClass="carousel-item-padding-40-px"
+                // deviceType={"Carousel"}
+                // dotListClass="custom-dot-list-style"
+                // itemClass="carousel-item-padding-40-px"
                 customLeftArrow={<button
                     className="react-multiple-carousel__arrow react-multiple-carousel__arrow--left"><ChevronLeftIcon
                     height={48} width={48} className="text-neutral-600 w-full h-full"/></button>}

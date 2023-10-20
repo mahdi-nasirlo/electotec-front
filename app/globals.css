@@ -5,9 +5,9 @@
 @tailwind utilities;
 
 /*react multi carousel */
-.react-multi-carousel-dot-list {
-    @apply hidden !important;
-}
+/*.react-multi-carousel-dot-list {*/
+/*    @apply hidden !important;*/
+/*}*/
 
 .react-multiple-carousel__arrow--right::before, .react-multiple-carousel__arrow--left::before {
     content: unset !important;
