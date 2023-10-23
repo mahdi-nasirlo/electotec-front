@@ -1,26 +1,26 @@
 "use client"
 
-import useBlogPost from "@/hook/api/blog/useBlogPost";
+import React from 'react';
 import CustomCarousel from "@/components/CustomCarousel";
 import ArticleCard from "@/app/components/article-carousel/article-card";
+import useGetAllService from "@/hook/api/service/useGetAllService";
 
-function Articles() {
+function Services() {
 
-    const blogPost = useBlogPost()
+    const blogPost = useGetAllService()
 
     const {data, isError, isLoading} = blogPost.getAll
 
-    if (isError) {
+    if (isLoading) {
         return <div>is loading...</div>
     }
 
     return (
         <>
             <h3 className="mt-12 font-semibold text-3xl">
-                محتوای تخصصی و مشاوره محور
+                فروش کالا
             </h3>
             <CustomCarousel>
-
                 {!isError && !isLoading && data?.data.map((post, index) => <ArticleCard key={index} post={post}/>)}
 
                 {isLoading && Array.from(new Array(15)).map((_, i) =>
@@ -38,4 +38,4 @@ function Articles() {
     );
 }
 
-export default Articles;
+export default Services;

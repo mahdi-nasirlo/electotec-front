@@ -1,14 +1,13 @@
 import Image from "next/image";
 import {ArrowSmallDownIcon} from "@heroicons/react/20/solid";
-import Articles from "@/app/components/article-carousel";
 import ThemeConfigProvider from "@/providers/theme-config-provider";
-import {Input} from "antd";
 import SearchInputs from "@/app/components/category-section/search-inputs";
 import {CubeIcon} from "@heroicons/react/24/outline";
+import Articles from "@/app/components/article-carousel";
+import Services from "@/app/components/service-carousel";
 
 export default async function Home() {
 
-    const {Search} = Input
     return (
         <>
             <ThemeConfigProvider>
@@ -116,20 +115,15 @@ export default async function Home() {
                         </div>
                     </div>
 
-                    <h3 className="mt-12 font-semibold text-3xl">
-                        محتوای تخصصی و مشاوره محور
-                    </h3>
+
                     <Articles/>
 
-                    <h3 className="mt-12 font-semibold text-3xl">
-                        فروش کالا
-                    </h3>
-                    <Articles/>
+                    <Services/>
 
-                    <h3 className="mt-12 font-semibold text-3xl">
-                        فروش خدمات
-                    </h3>
-                    <Articles/>
+                    {/*<h3 className="mt-12 font-semibold text-3xl">*/}
+                    {/*    فروش خدمات*/}
+                    {/*</h3>*/}
+                    {/*<Articles/>*/}
 
                 </section>
             </ThemeConfigProvider>

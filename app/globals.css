@@ -4,8 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/*react multi carousel */
-/*.react-multi-carousel-dot-list {*/
+/*react multi CustomCarousel */
+/*.react-multi-CustomCarousel-dot-list {*/
 /*    @apply hidden !important;*/
 /*}*/
 
@@ -29,7 +29,7 @@
     @apply left-0.5 !important
 }
 
-/*react multi carousel */
+/*react multi CustomCarousel */
 
 .ant-input:hover {
     @apply bg-white border-0 !important
