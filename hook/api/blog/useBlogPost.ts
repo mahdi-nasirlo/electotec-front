@@ -17,6 +17,7 @@ export interface GetDataPost {
     content: string
     blog_category?: GetDataCategory,
     tags?: WrapperInterface<{ title: string }>
+    labels?: WrapperInterface<{ title: string }>
 }
 
 export interface GetDataCategory {

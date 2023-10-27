@@ -21,7 +21,7 @@ function Articles() {
             </h3>
             <CustomCarousel>
 
-                {!isError && !isLoading && data?.data.map((post, index) => <ArticleCard key={index} post={post}/>)}
+                {!isError && !isLoading && data?.data?.map((post, index) => <ArticleCard key={index} post={post}/>)}
 
                 {isLoading && Array.from(new Array(15)).map((_, i) =>
                     <div

@@ -1,6 +1,5 @@
 import {useQuery} from "@tanstack/react-query";
 import {getFetcher} from "@/lib/fetch-functions/getFetcher";
-import {GetAllDataPost} from "@/hook/api/blog/useBlogPost";
 import {WrapperInterface, WrapperItemInterface} from "@/response-interface/wrapper-interface";
 
 interface BlogPostApiServiceType {

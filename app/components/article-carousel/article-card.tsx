@@ -1,8 +1,9 @@
 import React from 'react';
 import {GetDataPost} from "@/hook/api/blog/useBlogPost";
 import {WrapperItemInterface} from "@/response-interface/wrapper-interface";
+import {Card, CardContent, CardFooter, CardHeader} from "@/components/ui/card";
 import Image from "next/image";
-import {Tag, Typography} from "antd";
+import {Badge} from "@/components/ui/badge";
 
 function ArticleCard({post}: {
     post: WrapperItemInterface<GetDataPost>
@@ -14,29 +15,35 @@ function ArticleCard({post}: {
 
     const category = attributes?.blog_category?.data?.attributes
 
-    const tags = attributes.tags?.data.map((tag) => tag.attributes.title)
+    const labels = attributes.labels?.data.map((tag) => tag.attributes.title)
 
     return (
-        <div className="m-2 drop-shadow  border-[0.5px] rounded-lg">
-            <Image
-                className="w-full h-60 object-cover rounded-t-md"
-                width={imageData.width}
-                height={imageData.height}
-                src={`${process.env.NEXT_PUBLIC_BACK_END_URL}${imageData.url}`}
-                alt={`${imageData.name}`}/>
-            <div className="mx-3 my-4">
-                <div className="flex justify-end">
-                    {category && <Tag color="red" className="mx-0">{category.title}</Tag>}
-                </div>
-                <h6 className="text-right text-md font-medium mt-3 mb-5">
-                    {attributes.title}
-                </h6>
-                <div className="text-right  flex justify-end">
-                    {tags?.map((item) => <> <Typography
-                        className="mr-2 text-gray-400 text-sm font-light border-l pl-2">{item}</Typography> </>)}
-                </div>
-            </div>
-        </div>
+        <>
+            <Card className="mx-2">
+                <CardHeader className="p-0">
+                    <Image
+                        className="w-full h-60 object-cover rounded-t-md"
+                        width={imageData.width}
+                        height={imageData.height}
+                        src={`${process.env.NEXT_PUBLIC_BACK_END_URL}${imageData.url}`}
+                        alt={`${imageData.name}`}/>
+                </CardHeader>
+                <CardContent className="pb-0">
+                    {category && <Badge variant="secondary">{category.title}</Badge>}
+                    <p className={`text-right text-lg font-medium ${category && "mt-3"} mb-5`}>{attributes.title}</p>
+                </CardContent>
+                <CardFooter className="pt-0 px-2 pb-3 justify-end">
+                    <div className="flex justify-start">
+                        {labels?.map((tag, index) => <p
+                            className="mr-2 text-gray-400 text-sm font-light border-l border-gray-300 pl-2"
+                            key={index}
+                        >
+                            {tag}
+                        </p>)}
+                    </div>
+                </CardFooter>
+            </Card>
+        </>
     );
 }
 

@@ -7,23 +7,22 @@ import useGetAllService from "@/hook/api/service/useGetAllService";
 
 function Services() {
 
-    const blogPost = useGetAllService()
+    const services = useGetAllService()
 
-    const {data, isError, isLoading} = blogPost.getAll
-
-    if (isLoading) {
+    if (services.getAll.isLoading) {
         return <div>is loading...</div>
     }
 
     return (
         <>
             <h3 className="mt-12 font-semibold text-3xl">
-                فروش کالا
+                لیست لیست خدمات
             </h3>
             <CustomCarousel>
-                {!isError && !isLoading && data?.data.map((post, index) => <ArticleCard key={index} post={post}/>)}
+                {!services.getAll.isError && !services.getAll.isLoading && services.getAll.data?.data?.map((post, index) =>
+                    <ArticleCard key={index} post={post}/>)}
 
-                {isLoading && Array.from(new Array(15)).map((_, i) =>
+                {services.getAll.isError && Array.from(new Array(15)).map((_, i) =>
                     <div
                         className="object-cover m-2"
                         key={i}
