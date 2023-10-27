@@ -1,9 +1,9 @@
 "use client"
 
 import React from 'react';
-import CustomCarousel from "@/components/CustomCarousel";
-import ArticleCard from "@/app/components/article-carousel/article-card";
+import CustomCarousel from "../../../components/template/CustomCarousel";
 import useGetAllService from "@/hook/api/service/useGetAllService";
+import ServiceCard from "@/app/components/service-carousel/service-card";
 
 function Services() {
 
@@ -19,8 +19,8 @@ function Services() {
                 لیست لیست خدمات
             </h3>
             <CustomCarousel>
-                {!services.getAll.isError && !services.getAll.isLoading && services.getAll.data?.data?.map((post, index) =>
-                    <ArticleCard key={index} post={post}/>)}
+                {!services.getAll.isError && !services.getAll.isLoading && services.getAll.data?.data?.map((service, index) =>
+                    <ServiceCard key={index} service={service}/>)}
 
                 {services.getAll.isError && Array.from(new Array(15)).map((_, i) =>
                     <div

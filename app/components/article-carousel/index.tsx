@@ -1,7 +1,7 @@
 "use client"
 
 import useBlogPost from "@/hook/api/blog/useBlogPost";
-import CustomCarousel from "@/components/CustomCarousel";
+import CustomCarousel from "../../../components/template/CustomCarousel";
 import ArticleCard from "@/app/components/article-carousel/article-card";
 
 function Articles() {

@@ -1,21 +1,21 @@
 import React from 'react';
-import {GetDataPost} from "@/hook/api/blog/useBlogPost";
 import {WrapperItemInterface} from "@/response-interface/wrapper-interface";
 import {Card, CardContent, CardFooter, CardHeader} from "@/components/ui/card";
 import Image from "next/image";
 import {Badge} from "@/components/ui/badge";
+import {GetDataService} from "@/hook/api/service/useGetAllService";
 
-function ArticleCard({post}: {
-    post: WrapperItemInterface<GetDataPost>
+function ServiceCard({service}: {
+    service: WrapperItemInterface<GetDataService>
 }) {
 
-    const attributes = post.attributes
+    const attributes = service.attributes
 
     const imageData = attributes.image.data.attributes
 
-    const category = attributes?.blog_category?.data?.attributes
+    const category = attributes?.service_category?.data?.attributes
 
-    const labels = attributes.labels?.data.map((tag) => tag.attributes.title)
+    const labels = attributes.labels?.data.map((label: any) => label.attributes.title)
 
     return (
         <>
@@ -33,7 +33,7 @@ function ArticleCard({post}: {
                     <p className={`text-right text-lg font-medium ${category && "mt-3"} mb-5`}>{attributes.title}</p>
                 </CardContent>
                 <CardFooter className="pt-0 px-2 pb-3 justify-end">
-                    <div className="flex justify-start flex-row-reverse">
+                    <div className="flex flex-row-reverse justify-start">
                         {labels?.map((tag, index) => <p
                             className={`mr-2 text-gray-400 text-sm font-light ${labels?.length - 1 !== index && "border-l"} border-gray-300 pl-2`}
                             key={index}
@@ -47,4 +47,4 @@ function ArticleCard({post}: {
     );
 }
 
-export default ArticleCard;
+export default ServiceCard;

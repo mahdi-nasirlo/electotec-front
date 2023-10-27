@@ -9,7 +9,7 @@ interface propType {
 
 function Index(props: propType) {
     return (
-        <div className="border border-2 border-red-600 rounded-lg p-3 mb-6 mt-4">
+        <div className="border-2 border-red-600 rounded-2xl p-3 px-1 mb-6 mt-4">
             <Carousel
                 swipeable={true}
                 draggable={true}
