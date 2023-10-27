@@ -4,6 +4,7 @@ import SearchInputs from "@/app/components/category-section/search-inputs";
 import {CubeIcon} from "@heroicons/react/24/outline";
 import Articles from "@/app/components/article-carousel";
 import Services from "@/app/components/service-carousel";
+import Link from "next/link";
 
 export default async function Home() {
 
@@ -27,7 +28,9 @@ export default async function Home() {
                         </button>
                         <button
                             className="bg-gray-100 text-gray-700 mx-3 px-3 py-2 rounded-lg hover:scale-105 cursor-pointer">
-                            تیم مشاوران متخصص
+                            <Link href="/professional-consultation">
+                                مشاوره تخصصی
+                            </Link>
                         </button>
                     </div>
                     <div
