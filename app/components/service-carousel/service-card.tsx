@@ -4,6 +4,7 @@ import {Card, CardContent, CardFooter, CardHeader} from "@/components/ui/card";
 import Image from "next/image";
 import {Badge} from "@/components/ui/badge";
 import {GetDataService} from "@/hook/api/service/useGetAllService";
+import Link from "next/link";
 
 function ServiceCard({service}: {
     service: WrapperItemInterface<GetDataService>
@@ -30,7 +31,12 @@ function ServiceCard({service}: {
                 </CardHeader>
                 <CardContent className="pb-0">
                     {category && <Badge variant="secondary">{category.title}</Badge>}
-                    <p className={`text-right text-lg font-medium ${category && "mt-3"} mb-5`}>{attributes.title}</p>
+                    <Link href={`/service/${service.id}`}
+                          className={`block text-right text-lg font-medium ${category && "mt-3"} mb-5`}>
+                        <span className="hover-underline-animation">
+                            {attributes.title}
+                        </span>
+                    </Link>
                 </CardContent>
                 <CardFooter className="pt-0 px-2 pb-3 justify-end">
                     <div className="flex flex-row-reverse justify-start">

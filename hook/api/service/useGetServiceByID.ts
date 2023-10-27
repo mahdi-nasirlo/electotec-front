@@ -3,9 +3,9 @@ import {getFetcher} from "@/lib/fetch-functions/getFetcher";
 import {WrapperInterface, WrapperItemInterface} from "@/response-interface/wrapper-interface";
 
 
-export type GetAllDataService = WrapperInterface<GetDataService>
+export type GetDataService = { data?: WrapperItemInterface<GetDataServiceAttribute> }
 
-export interface GetDataService {
+export interface GetDataServiceAttribute {
     title: string,
     content: string
     service_category?: GetDataCategory,
@@ -21,20 +21,19 @@ export interface GetDataCategory {
     }>
 }
 
-
-const UseGetAllService = () => {
+const UseGetServiceById = (id: string) => {
 
     const {
         data,
         isLoading,
-        isError
-    } = useQuery<GetAllDataService | undefined>({
-        queryKey: ["/services"],
-        queryFn: () => getFetcher("/api/services?populate=*")
+        isError,
+        isRefetching
+    } = useQuery<GetDataService | undefined>({
+        queryKey: ["/services/" + id],
+        queryFn: () => getFetcher("/api/services/1?populate=*")
     })
 
-    return {getAll: {isLoading: isLoading, data: data, isError: isError}}
-
+    return {data, isLoading: isLoading || isRefetching, isError}
 };
 
-export default UseGetAllService;
+export default UseGetServiceById;

@@ -27,7 +27,7 @@ function Index() {
                                 </a>
                                 <a
                                     href="#"
-                                    className="transform transition duration-500 hover:scale-105 text-gray-600 hover:bg-gray-100 hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+                                    className="transform transition duration-500 hover:scale-105 text-gray-600 hover:bg-gray-100 hover:text-black px-3 pl-0 py-2 rounded-md text-sm font-medium"
                                 >
                                     باشگاه مشتریان
                                 </a>
