@@ -4,6 +4,8 @@ import {useState} from "react";
 import {Button} from "@/components/ui/button";
 import {useMultipleStepForm} from "@/hook/ui/useMultipleStepForm";
 import {AnimatePresence} from "framer-motion";
+import useGetFormData from "@/hook/api/form_group/useGetFormData";
+import FormBuilder from "@/components/template/FormBuilder";
 // import UserInfoForm from "@/components/UserInfoForm";
 // import PlanForm from "@/components/PlanForm";
 // import AddonsForm from "@/components/AddonsForm";
@@ -72,6 +74,8 @@ export default function Home() {
         showSuccessMsg,
     } = useMultipleStepForm(4);
 
+    const formSchemaData = useGetFormData("1")
+
     function updateForm(fieldToUpdate: Partial<FormItems>) {
         const {name, email, phone} = fieldToUpdate;
 
@@ -133,7 +137,7 @@ export default function Home() {
                 <div
                     className={`w-full flex justify-between ${
                         currentStepIndex === 1 ? "h-[600px] md:h-[500px]" : "h-[500px]"
-                    } relative rounded-lg border border-neutral-700 bg-[#262626] p-4`}
+                    } relative rounded-lg p-4`}
                 >
                     {!showSuccessMsg ? (
                         <></>
@@ -142,7 +146,7 @@ export default function Home() {
                         ""
                     )}
                     <main
-                        className={`${showSuccessMsg ? "w-full" : "w-full md:mt-5 md:w-[65%]"}`}
+                        className={`${showSuccessMsg ? "w-full" : "w-full md:mt-5"}`}
                     >
                         {showSuccessMsg ? (
                             <AnimatePresence mode="wait">
@@ -154,14 +158,14 @@ export default function Home() {
                                 className="w-full flex flex-col justify-between h-full"
                             >
                                 <AnimatePresence mode="wait">
-                                    {/*    {currentStepIndex === 0 && (*/}
-                                    {/*        <UserInfoForm*/}
-                                    {/*            key="step1"*/}
-                                    {/*            {...formData}*/}
-                                    {/*            updateForm={updateForm}*/}
-                                    {/*            errors={errors}*/}
-                                    {/*        />*/}
-                                    {/*    )}*/}
+                                    {/*{currentStepIndex === 0 && (*/}
+                                    {/*    <UserInfoForm*/}
+                                    {/*        key="step1"*/}
+                                    {/*        {...formData}*/}
+                                    {/*        updateForm={updateForm}*/}
+                                    {/*        errors={errors}*/}
+                                    {/*    />*/}
+                                    {/*)}*/}
                                     {/*    {currentStepIndex === 1 && (*/}
                                     {/*        <PlanForm key="step2" {...formData} updateForm={updateForm}/>*/}
                                     {/*    )}*/}
@@ -171,6 +175,7 @@ export default function Home() {
                                     {/*    {currentStepIndex === 3 && (*/}
                                     {/*        <FinalStep key="step4" {...formData} goTo={goTo}/>*/}
                                     {/*    )}*/}
+                                    <FormBuilder formSchema={formSchemaData.getAll.data}/>
                                 </AnimatePresence>
                                 <div className="w-full items-center flex justify-between">
                                     <div className="">

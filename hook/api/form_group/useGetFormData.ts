@@ -3,23 +3,24 @@ import {getFetcher} from "@/lib/fetch-functions/getFetcher";
 import {WrapperInterface, WrapperItemInterface} from "@/response-interface/wrapper-interface";
 
 export interface GetDataForm {
-    data: WrapperItemInterface<any>
+    data: WrapperItemInterface<GetDataFormAttribute>
 }
 
 interface GetDataFormAttribute {
     title: string,
     key: string,
-    forms: { data: WrapperInterface<FormItemData> }
+    forms?: WrapperInterface<FormItemData>
 }
 
 interface FormItemData {
     title: string,
     desc: string,
     step: number,
-    form_inputs: { data: WrapperInterface<FormInputsData> }
+    form_inputs?: WrapperInterface<FormInputsData>
 }
 
 interface FormInputsData {
+    name?: string,
     label: string,
     placeholder: string,
     is_required: boolean,
