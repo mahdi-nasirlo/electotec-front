@@ -12,14 +12,14 @@ interface GetDataFormAttribute {
     forms?: WrapperInterface<FormItemData>
 }
 
-interface FormItemData {
+export interface FormItemData {
     title: string,
     desc: string,
     step: number,
     form_inputs?: WrapperInterface<FormInputsData>
 }
 
-interface FormInputsData {
+export interface FormInputsData {
     name?: string,
     label: string,
     placeholder: string,

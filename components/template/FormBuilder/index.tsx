@@ -1,6 +1,7 @@
 import React from 'react';
-import {GetDataForm} from "@/hook/api/form_group/useGetFormData";
+import {FormInputsData, GetDataForm} from "@/hook/api/form_group/useGetFormData";
 import FormWrapper from "@/components/ui/FormWrapper";
+import {WrapperInterface, WrapperItemInterface} from "@/response-interface/wrapper-interface";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 
@@ -22,24 +23,11 @@ const Index = (props: PropsType) => {
             {formSchema?.forms?.data.map(form => <>
                 <FormWrapper title={formSchema?.title} description="">
                     {form.attributes.form_inputs?.data.map(input => <>
-                        <div className="w-full flex flex-col gap-5">
-                            <div className="flex flex-col gap-2">
-                                <Label htmlFor="name">{input.attributes.label}</Label>
-                                <Input
-                                    autoFocus
-                                    type="text"
-                                    name={input.attributes?.name}
-                                    id="name"
-                                    placeholder={input.attributes.placeholder}
-                                    // value={input.attributes.label}
-                                    // onChange={(e) => updateForm({name: e.target.value})}
-                                    className="w-full"
-                                    required
-                                />
-                                {/*{errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}*/}
-                            </div>
-                        </div>
+
                     </>)}
+                    <div className="w-full flex flex-col gap-5">
+                        <FormRenderInput data={form.attributes.form_inputs?.data || []}/>
+                    </div>
                 </FormWrapper>
             </>)}
         </div>
@@ -47,5 +35,36 @@ const Index = (props: PropsType) => {
 };
 
 const FormSkeleton = () => <></>
+
+const FormRenderInput = (props: WrapperInterface<FormInputsData>) => {
+
+    const renderInput = (input: WrapperItemInterface<FormInputsData>) => {
+
+        let currentInput
+
+        switch (input.attributes.type) {
+            case "text_input":
+                currentInput = <>
+                    <Label htmlFor="name">{input.attributes.label}</Label>
+                    <Input
+                        autoFocus
+                        type="text"
+                        id="name"
+                        placeholder={input.attributes.placeholder}
+                        name={input.attributes.name}
+                        // onChange={(e) => updateForm({name: e.target.value})}
+                        className="w-full"
+                        required
+                    />
+                    {/*{errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}*/}
+                </>
+        }
+
+        return currentInput
+
+    }
+
+    return <>{props?.data.map(input => renderInput(input))}</>
+}
 
 export default Index;
