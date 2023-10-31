@@ -38,7 +38,7 @@ export interface ImageInterface {
     }
 }
 
-interface ImageSize {
+export interface ImageSize {
     "name": string,
     "hash": string,
     "ext": string,
