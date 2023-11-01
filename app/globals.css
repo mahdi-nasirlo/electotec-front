@@ -77,6 +77,10 @@
         @apply bg-background text-foreground text-right;
         direction: rtl;
     }
+
+    svg {
+        @apply w-7 h-7
+    }
 }
 
 .react-multi-carousel-item > div {
