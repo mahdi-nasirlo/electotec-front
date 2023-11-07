@@ -1,12 +1,13 @@
 import React from 'react';
 import Breadcrumb from "@/components/ui/breadcrumb";
-import {ChevronLeftIcon} from "@heroicons/react/20/solid";
+import {ChevronLeftIcon, XCircleIcon} from "@heroicons/react/20/solid";
 import {GetDataService} from "@/hook/api/service/useGetServiceByID";
 import {notFound} from "next/navigation";
 import Image from "next/image";
 import ServiceItemScrollArea from "@/app/service/[slug]/components/ServiceItemScrollArea";
 import {Button} from "@/components/ui/button";
 import UserInfoAvatar from "@/components/template/UserInfoAvatar";
+import {CheckCircledIcon} from "@radix-ui/react-icons";
 
 interface PropsType {
     params: { slug: string }
@@ -25,6 +26,10 @@ async function Page({params: {slug}}: PropsType) {
     const strengths = res?.strengths
 
     const strengths_item = res?.strengths_item
+
+    const weaknesses = res?.weaknesses
+
+    const weaknesses_item = res?.weaknesses_item
 
     return (
         <div>
@@ -57,7 +62,7 @@ async function Page({params: {slug}}: PropsType) {
                         </div>
                     </div>
                     <div className="grid grid-cols-3 grid-rows-2 gap-3 mt-4">
-                        {gallery?.data.map((image, index) => <>
+                        {gallery?.data?.map((image, index) => <>
                             <div className={`${index === 0 && "row-span-2 col-span-2"}`}>
                                 <Image
                                     className="h-full object-cover rounded-lg"
@@ -68,11 +73,11 @@ async function Page({params: {slug}}: PropsType) {
                             </div>
                         </>)}
                     </div>
-                    <div className="mt-6 grid gap-2 grid-cols-2">
+                    <div className="my-6 mb-8 grid gap-4 grid-cols-2">
                         <div>
                             <ServiceItemScrollArea serviceItem={serviceItem}/>
                         </div>
-                        <div className="flex flex-col rounded-md border-[1.5px] p-3 h-fit">
+                        <div className="flex flex-col rounded-lg border-[1.5px] p-3 h-fit">
                             <div className="flex items-center h-auto justify-between w-full">
                                 <div className="">
                                     <span className="pl-3">میانگین هزینه</span>
@@ -102,9 +107,54 @@ async function Page({params: {slug}}: PropsType) {
                             </div>
                         </div>
                     </div>
-                    <div className="flex gap-5">
-                        <div className="rounded-lg "></div>
-                        <div></div>
+                    <div className="grid grid-cols-2 gap-5">
+                        <div className="rounded-lg border-[1.5px] col-span-2 px-5 py-4 grid grid-cols-5 gap-x-5">
+                            <div className="col-span-3">
+                                <div className="text-2xl font-medium">
+                                    نقاط قوت
+                                </div>
+                                <div>
+                                    <p>
+                                        {strengths}
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="col-span-2">
+                                <div className="text-2xl font-medium">
+                                    خلاصه
+                                </div>
+                                <div>
+                                    {strengths_item?.map(item => <>
+                                        <p className="my-4 flex items-center"><CheckCircledIcon
+                                            className="ml-2"/>{item.item}</p>
+                                    </>)}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="rounded-lg border-[1.5px] col-span-2 px-5 py-4 grid grid-cols-5 gap-x-5">
+                            <div className="col-span-3">
+                                <div className="text-2xl font-medium text-red-500">
+                                    نقاط ضعف
+                                </div>
+                                <div>
+                                    <p>
+                                        {weaknesses}
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="col-span-2">
+                                <div className="text-2xl font-medium">
+                                    خلاصه
+                                </div>
+                                <div>
+                                    {weaknesses_item?.map(item => <>
+                                        <p className="my-4 flex items-center">
+                                            <XCircleIcon
+                                                className="ml-2 text-red-500"/>{item.item}</p>
+                                    </>)}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

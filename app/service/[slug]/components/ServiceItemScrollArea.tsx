@@ -8,7 +8,7 @@ import {ChevronLeftIcon} from "@heroicons/react/20/solid";
 
 const ServiceItemScrollArea = ({serviceItem}: { serviceItem: WrapperInterface<{ title: string }> | undefined }) => {
     return (
-        <ScrollArea autoFocus={true} scrollHideDelay={60000} className="h-[343px] w-full rounded-md border-[1.5px] p-3">
+        <ScrollArea autoFocus={true} scrollHideDelay={60000} className="h-[343px] w-full rounded-lg border-[1.5px] p-3">
             <div className="font-medium sticky top-0 text-xl bg-white w-full left-[-10px]">مشخصات عملکردی</div>
             <div className="mt-5">
                 {serviceItem?.data.map((item, index) => <>
