@@ -2,6 +2,7 @@ import React from 'react';
 import Image from "next/image";
 import HeaderContainer from "@/components/layouts/header/header-container";
 import MainContainer from "@/components/layouts/main-container";
+import Link from "next/link";
 
 function Index() {
     return (
@@ -27,14 +28,16 @@ function Index() {
                                 </a>
                                 <a
                                     href="#"
-                                    className="transform transition duration-500 hover:scale-105 text-gray-600 hover:bg-gray-100 hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+                                    className="transform transition duration-500 hover:scale-105 text-gray-600 hover:bg-gray-100 hover:text-black px-3 pl-0 py-2 rounded-md text-sm font-medium"
                                 >
                                     باشگاه مشتریان
                                 </a>
                             </div>
                         </div>
-                        <Image alt="electotec logo" width={175} height={175} src={"/logo.svg"}
-                               className="mt-2 max-h-full"/>
+                        <Link href="/">
+                            <Image alt="electotec logo" width={175} height={175} src={"/logo.svg"}
+                                   className="mt-2 max-h-full"/>
+                        </Link>
                         <button
                             className="bg-red-600 font-semibold transform transition duration-500 hover:scale-105 text-white py-2 px-3 rounded-lg absolute right-0">
                             شناخت الکتوتک

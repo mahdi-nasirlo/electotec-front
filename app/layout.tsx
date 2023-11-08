@@ -1,6 +1,5 @@
 import './globals.css'
 import type {Metadata} from 'next'
-import StyledComponentsRegistry from "@/lib/antd-registry";
 import Providers from "@/providers/query-client-provider";
 import Header from "@/components/layouts/header";
 import MainContainer from "@/components/layouts/main-container";
@@ -19,12 +18,10 @@ export default function RootLayout({
         <html lang="en">
         <body>
         <Providers>
-            <StyledComponentsRegistry>
-                <Header/>
-                <MainContainer>
-                    {children}
-                </MainContainer>
-            </StyledComponentsRegistry>
+            <Header/>
+            <MainContainer>
+                {children}
+            </MainContainer>
         </Providers>
         </body>
         </html>
