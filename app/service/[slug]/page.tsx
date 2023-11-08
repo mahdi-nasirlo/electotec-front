@@ -8,6 +8,7 @@ import ServiceItemScrollArea from "@/app/service/[slug]/components/ServiceItemSc
 import {Button} from "@/components/ui/button";
 import UserInfoAvatar from "@/components/template/UserInfoAvatar";
 import {CheckCircledIcon} from "@radix-ui/react-icons";
+import {Separator} from "@/components/ui/separator";
 
 interface PropsType {
     params: { slug: string }
@@ -30,6 +31,8 @@ async function Page({params: {slug}}: PropsType) {
     const weaknesses = res?.weaknesses
 
     const weaknesses_item = res?.weaknesses_item
+
+    const content = res?.content
 
     return (
         <div>
@@ -155,6 +158,15 @@ async function Page({params: {slug}}: PropsType) {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div className="border-[1.5px] rounded-lg mt-5 p-5 leading-10 text-gray-800">
+                        <p className="font-bold text-xl text-red-500">
+                            اطلاعات کاربردی
+                        </p>
+                        <Separator className="mb-4 mt-3"/>
+                        <p>
+                            {content}
+                        </p>
                     </div>
                 </div>
             </div>
