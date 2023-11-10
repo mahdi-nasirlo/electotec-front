@@ -1,9 +1,11 @@
 import React from 'react';
-import {FormInputsData, GetDataForm} from "@/hook/api/form_group/useGetFormData";
+import useGetFormData, {GetDataForm} from "@/hook/api/form_group/useGetFormData";
 import FormWrapper from "@/components/ui/FormWrapper";
-import {WrapperInterface, WrapperItemInterface} from "@/response-interface/wrapper-interface";
-import {Label} from "@/components/ui/label";
-import {Input} from "@/components/ui/input";
+import {useMultipleStepForm} from "@/hook/ui/useMultipleStepForm";
+import {AnimatePresence} from "framer-motion";
+import FormRenderInput from "@/components/template/FormBuilder/FormRenderInput";
+import FormRenderChoice from "@/components/template/FormBuilder/FormRenderChoice";
+import {Button} from "@/components/ui/button";
 
 interface PropsType {
     formSchema: GetDataForm | undefined,
@@ -11,6 +13,19 @@ interface PropsType {
 }
 
 const Index = (props: PropsType) => {
+
+    const formSchemaData = useGetFormData("1")
+
+    const {
+        previousStep,
+        nextStep,
+        currentStepIndex,
+        isFirstStep,
+        isLastStep,
+        steps,
+        goTo,
+        showSuccessMsg,
+    } = useMultipleStepForm(4);
 
     if (props.isLoading) {
         return <FormSkeleton/>
@@ -20,51 +35,38 @@ const Index = (props: PropsType) => {
 
     return (
         <div>
-            {formSchema?.forms?.data.map(form => <>
-                <FormWrapper title={formSchema?.title} description="">
-                    {form.attributes.form_inputs?.data.map(input => <>
+            <h1 className="text-gray-700 font-extrabold text-3xl underline underline-offset-4 decoration-2 decoration-primary mb-8">{formSchema?.title}</h1>
+            <form
+                // onSubmit={handleOnSubmit}
+                className="w-full flex flex-col justify-between h-full"
+            >
+                <AnimatePresence mode="wait">
+                    {formSchema?.forms?.data.map((form, index) => <>
+                        {
+                            currentStepIndex === index && <FormWrapper title={form.attributes.title} description="">
+                                {form.attributes.form_inputs?.data.map(input => <>
 
+                                </>)}
+                                <FormRenderInput data={form.attributes.form_inputs?.data || []}/>
+                                <FormRenderChoice data={form.attributes.form_choices}/>
+                            </FormWrapper>
+                        }
                     </>)}
-                    <div className="w-full flex flex-col gap-5">
-                        <FormRenderInput data={form.attributes.form_inputs?.data || []}/>
-                    </div>
-                </FormWrapper>
-            </>)}
+                </AnimatePresence>
+                <div className="flex justify-between mt-10">
+                    {!isFirstStep && <Button variant="ghost">
+                        مرحله قبل
+                    </Button>}
+                    <Button type="submit">
+                        {isLastStep ? "تایید" : "ثبت و ادامه"}
+                    </Button>
+                </div>
+            </form>
         </div>
     );
 };
 
 const FormSkeleton = () => <></>
 
-const FormRenderInput = (props: WrapperInterface<FormInputsData>) => {
-
-    const renderInput = (input: WrapperItemInterface<FormInputsData>) => {
-
-        let currentInput
-
-        switch (input.attributes.type) {
-            case "text_input":
-                currentInput = <>
-                    <Label htmlFor="name">{input.attributes.label}</Label>
-                    <Input
-                        autoFocus
-                        type="text"
-                        id="name"
-                        placeholder={input.attributes.placeholder}
-                        name={input.attributes.name}
-                        // onChange={(e) => updateForm({name: e.target.value})}
-                        className="w-full"
-                        required
-                    />
-                    {/*{errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}*/}
-                </>
-        }
-
-        return currentInput
-
-    }
-
-    return <>{props?.data.map(input => renderInput(input))}</>
-}
 
 export default Index;
