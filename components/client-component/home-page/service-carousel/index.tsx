@@ -1,9 +1,9 @@
 "use client"
 
 import React from 'react';
-import CustomCarousel from "../../../components/template/CustomCarousel";
 import useGetAllService from "@/hook/api/service/useGetAllService";
-import ServiceCard from "@/app/components/service-carousel/service-card";
+import CustomCarousel from "@/components/template/CustomCarousel";
+import ServiceCard from "@/components/client-component/home-page/service-carousel/service-card";
 
 function Services() {
 

@@ -1,10 +1,10 @@
 import Image from "next/image";
 import {ArrowSmallDownIcon} from "@heroicons/react/20/solid";
-import SearchInputs from "@/app/components/category-section/search-inputs";
 import {CubeIcon} from "@heroicons/react/24/outline";
-import Articles from "@/app/components/article-carousel";
-import Services from "@/app/components/service-carousel";
 import Link from "next/link";
+import Articles from "@/components/client-component/home-page/article-carousel";
+import Services from "@/components/client-component/home-page/service-carousel";
+import SearchInputs from "@/components/client-component/home-page/category-section/search-inputs";
 
 export default async function Home() {
 
