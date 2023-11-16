@@ -1,10 +1,8 @@
-import React from 'react';
+import CreateContract from "../../../../components/client-component/account/CreateContract"
 
 const Page = () => {
     return (
-        <div>
-
-        </div>
+       <CreateContract />
     );
 };
 
