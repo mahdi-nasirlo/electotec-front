@@ -1,7 +1,8 @@
 "use client"
 
 import React from 'react';
-import useControlContract from "@/components/client-component/AcountCreateContract/state-managment/useControlContract";
+import useControlContract
+    from "@/components/client-component/AccountCreateContractClient/state-managment/useControlContract";
 
 const Index = () => {
 

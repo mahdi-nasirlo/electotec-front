@@ -5,11 +5,11 @@ import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {DocumentTextIcon, PrinterIcon} from "@heroicons/react/24/outline";
 import {PencilLineIcon} from "lucide-react";
 import ControlContractProvider
-    from "@/components/client-component/AcountCreateContract/state-managment/ControlContractProvider";
-import {PresetSave} from "@/components/client-component/AcountCreateContract/PresetSave";
-import {PresetShare} from "@/components/client-component/AcountCreateContract/PresetShare";
+    from "@/components/client-component/AccountCreateContractClient/state-managment/ControlContractProvider";
+import {PresetSave} from "@/components/client-component/AccountCreateContractClient/PresetSave";
+import {PresetShare} from "@/components/client-component/AccountCreateContractClient/PresetShare";
 import ContractViewer from "@/components/template/ContractViewer";
-import ContractContact from "@/components/client-component/AcountCreateContract/ContractContact";
+import ContractContact from "@/components/client-component/AccountCreateContractClient/ContractContact";
 
 
 export default function Index() {

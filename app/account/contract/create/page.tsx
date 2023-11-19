@@ -1,8 +1,8 @@
-import CreateContract from "../../../../components/client-component/AcountCreateContract/index"
+import AccountCreateContractClient from "../../../../components/client-component/AccountCreateContractClient"
 
 const Page = () => {
     return (
-       <CreateContract />
+        <AccountCreateContractClient/>
     );
 };
 

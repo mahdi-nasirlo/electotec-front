@@ -6,7 +6,8 @@ import {z} from "zod";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {CounterClockwiseClockIcon} from "@radix-ui/react-icons";
 import {Textarea} from "@/components/ui/textarea";
-import useControlContract from "@/components/client-component/AcountCreateContract/state-managment/useControlContract";
+import useControlContract
+    from "@/components/client-component/AccountCreateContractClient/state-managment/useControlContract";
 
 const ContractContact = () => {
 

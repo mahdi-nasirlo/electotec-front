@@ -1,7 +1,7 @@
 import {useContext} from "react";
 import {
     ControlContractContext
-} from "@/components/client-component/AcountCreateContract/state-managment/ControlContractProvider";
+} from "@/components/client-component/AccountCreateContractClient/state-managment/ControlContractProvider";
 
 const useControlContract = () => {
 
