@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from "next/image";
 import HeaderContainer from "@/components/layouts/header/header-container";
 import MainContainer from "@/components/layouts/main-container";
 import Link from "next/link";
@@ -41,8 +40,9 @@ function Index() {
                             </div>
                         </div>
                         <Link href="/">
-                            <Image alt="electotec logo" width={175} height={175} src={"/logo.svg"}
-                                   className="mt-2 max-h-full"/>
+                            ELT
+                            {/*<Image alt="electotec logo" width={175} height={175} src={"/logo.svg"}*/}
+                            {/*       className="mt-2 max-h-full"/>*/}
                         </Link>
                         <button
                             className="bg-red-600 font-semibold transform transition duration-500 hover:scale-105 text-white py-2 px-3 rounded-lg absolute right-0">

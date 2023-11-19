@@ -1,4 +1,4 @@
-import CreateContract from "../../../../components/client-component/account/CreateContract"
+import CreateContract from "../../../../components/client-component/AcountCreateContract/index"
 
 const Page = () => {
     return (

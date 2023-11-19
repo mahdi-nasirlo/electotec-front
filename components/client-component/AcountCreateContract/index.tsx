@@ -2,17 +2,17 @@
 
 import {Separator} from "@/components/ui/separator";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
-import {PresetSave} from "@/components/client-component/account/CreateContract/PresetSave";
-import {PresetShare} from "@/components/client-component/account/CreateContract/PresetShare";
 import {DocumentTextIcon, PrinterIcon} from "@heroicons/react/24/outline";
 import {PencilLineIcon} from "lucide-react";
-import ContractContact from "@/components/client-component/account/CreateContract/ContractContact";
 import ControlContractProvider
-    from "@/components/client-component/account/CreateContract/state-managment/ControlContractProvider";
+    from "@/components/client-component/AcountCreateContract/state-managment/ControlContractProvider";
+import {PresetSave} from "@/components/client-component/AcountCreateContract/PresetSave";
+import {PresetShare} from "@/components/client-component/AcountCreateContract/PresetShare";
 import ContractViewer from "@/components/template/ContractViewer";
+import ContractContact from "@/components/client-component/AcountCreateContract/ContractContact";
+
 
 export default function Index() {
-
 
     return (
         <>
@@ -53,9 +53,7 @@ export default function Index() {
                                         <ContractViewer/>
                                     </TabsContent>
                                     <TabsContent value="insert" className="mt-0 border-0 p-0">
-                                        <div className="flex flex-col space-y-4">
-
-                                        </div>
+                                        {/*<ContractInsert/>*/}
                                     </TabsContent>
                                     <TabsContent value="edit" className="mt-0 border-0 p-0">
                                         <ContractContact/>

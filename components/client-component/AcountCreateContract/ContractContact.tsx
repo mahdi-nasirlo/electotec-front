@@ -6,13 +6,11 @@ import {z} from "zod";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {CounterClockwiseClockIcon} from "@radix-ui/react-icons";
 import {Textarea} from "@/components/ui/textarea";
-import useControlContract
-    from "@/components/client-component/account/CreateContract/state-managment/useControlContract";
-
+import useControlContract from "@/components/client-component/AcountCreateContract/state-managment/useControlContract";
 
 const ContractContact = () => {
 
-    const {form, formSchema} = useControlContract()
+    const {contentForm: form, contentFormSchema: formSchema} = useControlContract()
 
     function onSubmit(values: z.infer<typeof formSchema>) {
 
