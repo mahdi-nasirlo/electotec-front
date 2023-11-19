@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "node ./postinstall.js"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
@@ -24,10 +25,12 @@
     "@radix-ui/react-toggle-group": "^1.0.4",
     "@tanstack/react-query": "^4.35.7",
     "@tanstack/react-query-devtools": "^4.35.7",
+    "@tinymce/tinymce-react": "^4.3.1",
     "axios": "^1.5.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "framer-motion": "^10.16.4",
+    "fs-extra": "^11.1.1",
     "lucide-react": "^0.292.0",
     "next": "latest",
     "next-auth": "^4.24.5",
@@ -37,6 +40,7 @@
     "react-multi-carousel": "^2.8.4",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
+    "tinymce": "^6.7.3",
     "zod": "^3.22.4"
   },
   "devDependencies": {
