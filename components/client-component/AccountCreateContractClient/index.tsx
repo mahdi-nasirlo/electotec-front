@@ -10,6 +10,7 @@ import {PresetSave} from "@/components/client-component/AccountCreateContractCli
 import {PresetShare} from "@/components/client-component/AccountCreateContractClient/PresetShare";
 import ContractViewer from "@/components/template/ContractViewer";
 import ContractContact from "@/components/client-component/AccountCreateContractClient/ContractContact";
+import ContractInsert from "@/components/client-component/AccountCreateContractClient/ContractInsert";
 
 
 export default function Index() {
@@ -53,7 +54,7 @@ export default function Index() {
                                         <ContractViewer/>
                                     </TabsContent>
                                     <TabsContent value="insert" className="mt-0 border-0 p-0">
-                                        {/*<ContractInsert/>*/}
+                                        <ContractInsert/>
                                     </TabsContent>
                                     <TabsContent value="edit" className="mt-0 border-0 p-0">
                                         <ContractContact/>
