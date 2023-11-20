@@ -9,7 +9,7 @@ export function PresetShare() {
     return (
         <Popover>
             <PopoverTrigger asChild>
-                <Button style={{marginLeft: 0}} className="ml-0" variant="secondary" >اشتراک گذاری</Button>
+                <Button variant="secondary">اشتراک گذاری</Button>
             </PopoverTrigger>
             <PopoverContent align="end" className="w-[520px]">
                 <div className="flex flex-col space-y-2 text-center sm:text-left">

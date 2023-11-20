@@ -4,7 +4,8 @@ import {Input} from "@/components/ui/input";
 import {
     Dialog,
     DialogContent,
-    DialogDescription, DialogFooter,
+    DialogDescription,
+    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger
@@ -15,7 +16,7 @@ export function PresetSave() {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="secondary" className="ml-2">ذخیره نهایی</Button>
+                <Button variant="secondary">ذخیره نهایی</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[475px]">
                 <DialogHeader>
