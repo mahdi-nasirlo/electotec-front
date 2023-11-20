@@ -1,12 +1,14 @@
 import {useFieldArray, UseFieldArrayReturn, useForm, UseFormReturn} from "react-hook-form";
 import {z} from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
+import {useToast} from "@/components/ui/use-toast";
 
 export interface ContractInsertType {
     form: UseFormReturn<any>,
     schema: z.ZodObject<any>,
     onSubmit: (data: any) => void
     fieldArray: UseFieldArrayReturn<{ values?: { name: string }[] | undefined }>,
+    getLastData: () => void
 }
 
 
@@ -22,6 +24,11 @@ type InsertFormValues = z.infer<typeof schema>
 
 const useContractInsert = (): ContractInsertType => {
 
+    const storageKey = "contract_insert"
+
+    const {toast} = useToast()
+
+
     const form = useForm<InsertFormValues>({
         resolver: zodResolver(schema),
         mode: "onChange"
@@ -34,12 +41,29 @@ const useContractInsert = (): ContractInsertType => {
 
     const onSubmit = (data: InsertFormValues) => {
 
-        console.log(data)
+        localStorage.setItem(storageKey, JSON.stringify(data))
+
+        toast({
+            title: "پیش نویس با موفقیت ذخیره شد",
+            description: "برای انتشار قرار داد لطفا ذخیره سازی نهایی کنید",
+            duration: 5000
+        })
 
     }
 
+    const getLastData = () => {
 
-    return {form, fieldArray, onSubmit, schema}
+        let data = localStorage.getItem(storageKey)
+
+        data = JSON.parse(data)
+
+        console.log(data)
+
+        form.setValue("values", data?.values)
+
+    }
+
+    return {form, fieldArray, onSubmit, schema, getLastData}
 };
 
 export default useContractInsert;

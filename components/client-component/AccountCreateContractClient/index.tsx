@@ -11,9 +11,13 @@ import {PresetShare} from "@/components/client-component/AccountCreateContractCl
 import ContractViewer from "@/components/template/ContractViewer";
 import ContractContact from "@/components/client-component/AccountCreateContractClient/ContractContact";
 import ContractInsert from "@/components/client-component/AccountCreateContractClient/ContractInsert";
+import useContract from "@/components/client-component/AccountCreateContractClient/hooks/useContract";
+import RestoreButton from "@/components/client-component/AccountCreateContractClient/RestoreButton";
 
 
 export default function Index() {
+
+    const {restore} = useContract()
 
     return (
         <>
@@ -25,6 +29,7 @@ export default function Index() {
                         <div className="ml-auto flex w-full space-x-2 sm:justify-end">
                             <PresetSave/>
                             <PresetShare/>
+                            <RestoreButton/>
                         </div>
                     </div>
                     <Separator/>

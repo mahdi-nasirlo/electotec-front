@@ -35,7 +35,7 @@ const ContractInsert = () => {
                                         مشخص کنید.
                                     </FormDescription>
                                     <FormControl>
-                                        <Input {...renderField} defaultValue={field.name}/>
+                                        <Input {...renderField}/>
                                     </FormControl>
                                     <FormMessage/>
                                 </FormItem>
@@ -54,21 +54,19 @@ const ContractInsert = () => {
                                 افزودن متغیر
                             </Button>
                         </div>
-                    </> : <div className="flex justify-start gap-3">
-                        <Button
-                            type="button"
-                            variant="secondary"
-                            className="mt-3"
-                            onClick={() => fieldArray.append({name: ""})}
-                        >
-                            افزودن متغیر
-                        </Button>
+                    </> : <div className="flex justify-start gap-3 mt-3">
                         <Button
                             type="submit"
                             variant="default"
-                            className="mt-3"
                         >
                             ثبت
+                        </Button>
+                        <Button
+                            type="button"
+                            variant="secondary"
+                            onClick={() => fieldArray.append({name: ""})}
+                        >
+                            افزودن متغیر
                         </Button>
                     </div>}
                 </div>

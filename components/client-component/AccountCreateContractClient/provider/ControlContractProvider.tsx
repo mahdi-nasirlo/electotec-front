@@ -13,10 +13,16 @@ export const ControlContractProvider = (props: { children: React.ReactNode }) =>
 
     const contractInsert = useContractInsert()
 
+    const restore = () => {
+        contractInsert.getLastData()
+        contentContent.getLastData()
+    }
+
     return <ControlContractContext.Provider
         value={{
             content: contentContent,
-            insert: contractInsert
+            insert: contractInsert,
+            restore: restore
         }}
     >
         {props.children}
@@ -25,7 +31,8 @@ export const ControlContractProvider = (props: { children: React.ReactNode }) =>
 
 interface ControlContractType {
     content: ContractContentType,
-    insert: ContractInsertType
+    insert: ContractInsertType,
+    restore: () => void
 }
 
 export const ControlContractContext = React.createContext<ControlContractType>({} as ControlContractType)

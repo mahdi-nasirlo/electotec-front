@@ -11,7 +11,7 @@ const ContractContact = () => {
 
     const controlContract = useContract()
 
-    const {form, onSubmit} = controlContract.content
+    const {form, onSubmit,} = controlContract.content
     
     return (
         <>
