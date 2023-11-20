@@ -1,12 +1,13 @@
 "use client"
 
 import React from 'react';
-import useControlContract
-    from "@/components/client-component/AccountCreateContractClient/state-managment/useControlContract";
+import useContract from "@/components/client-component/AccountCreateContractClient/hooks/useContract";
 
 const Index = () => {
 
-    const {contentForm: form} = useControlContract()
+    const controlContract = useContract()
+
+    const {form} = controlContract.content
 
     return (
         <div className="text-right" style={{direction: "rtl"}}>

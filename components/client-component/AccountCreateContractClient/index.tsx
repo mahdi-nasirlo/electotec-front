@@ -5,7 +5,7 @@ import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {DocumentTextIcon, PrinterIcon} from "@heroicons/react/24/outline";
 import {PencilLineIcon} from "lucide-react";
 import ControlContractProvider
-    from "@/components/client-component/AccountCreateContractClient/state-managment/ControlContractProvider";
+    from "@/components/client-component/AccountCreateContractClient/provider/ControlContractProvider";
 import {PresetSave} from "@/components/client-component/AccountCreateContractClient/PresetSave";
 import {PresetShare} from "@/components/client-component/AccountCreateContractClient/PresetShare";
 import ContractViewer from "@/components/template/ContractViewer";

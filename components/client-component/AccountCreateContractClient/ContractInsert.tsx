@@ -1,7 +1,6 @@
 import React from 'react';
 import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
-import useControlContract
-    from "@/components/client-component/AccountCreateContractClient/state-managment/useControlContract";
+import useContract from "@/components/client-component/AccountCreateContractClient/hooks/useContract";
 import {cn} from "@/lib/utils";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
@@ -9,7 +8,7 @@ import Empty from "@/components/ui/empty";
 
 const ContractInsert = () => {
 
-    const controlContract = useControlContract()
+    const controlContract = useContract()
 
     const {form, fieldArray, onSubmit} = controlContract.insert
 

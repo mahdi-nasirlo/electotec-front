@@ -4,13 +4,12 @@ import React from 'react';
 import {Button} from "@/components/ui/button";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {CounterClockwiseClockIcon} from "@radix-ui/react-icons";
-import useControlContract
-    from "@/components/client-component/AccountCreateContractClient/state-managment/useControlContract";
+import useContract from "@/components/client-component/AccountCreateContractClient/hooks/useContract";
 import {Editor} from "@/components/ui/editor";
 
 const ContractContact = () => {
 
-    const controlContract = useControlContract()
+    const controlContract = useContract()
 
     const {form, onSubmit} = controlContract.content
     
