@@ -2,6 +2,7 @@ import {useForm, UseFormReturn} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {z} from "zod";
 import {useToast} from "@/components/ui/use-toast";
+import * as DOMPurify from 'dompurify';
 
 const useContractContent = (): ContractContentType => {
 
@@ -45,11 +46,13 @@ const useContractContent = (): ContractContentType => {
 
     }
 
+    const getContent = () => DOMPurify.sanitize(form.getValues("content"))
+
     return {
         form,
         schema,
         onSubmit,
-        content: form.getValues("content"),
+        content: getContent(),
         getLastData
     }
 };
