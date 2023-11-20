@@ -11,12 +11,7 @@ const ContractInsert = () => {
 
     const controlContract = useControlContract()
 
-    const {form, fieldArray} = controlContract.insert
-
-    function onSubmit(data: any) {
-
-        console.log(data)
-    }
+    const {form, fieldArray, onSubmit} = controlContract.insert
 
     return (
         <Form {...form}>

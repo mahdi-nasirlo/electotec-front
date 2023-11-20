@@ -7,19 +7,24 @@ interface ControlContractType {
     content: {
         form: UseFormReturn<{ content: string; }, any, undefined>,
         formSchema: z.ZodObject<{ content: z.ZodString }>
+        onSubmit: (data: any) => void
     },
     insert: {
         form: UseFormReturn<any>,
         schema: z.ZodObject<any>,
-        fieldArray: UseFieldArrayReturn<{ values?: { name: string }[] | undefined }>
+        onSubmit: (data: any) => void
+        fieldArray: UseFieldArrayReturn<{ values?: { name: string }[] | undefined }>,
     }
 }
 
+// * ****** content form ******
 const contentFormSchema = z.object({
     content: z.string().min(24, {message: "حداقل طول متن قرارداد ۲۴ کاراکتر است"})
 }).required()
+// * ****** content form ******
 
 
+// ! ****** insert form ******
 const insertFormSchema = z.object({
     values: z.array(
         z.object({
@@ -28,17 +33,29 @@ const insertFormSchema = z.object({
     ).optional(),
 })
 
+type InsertFormValues = z.infer<typeof insertFormSchema>
+// ! ****** insert form ******
 
 export const ControlContractProvider = (props: { children: React.ReactNode }) => {
 
-    const contentForm = useForm<z.infer<typeof contentFormSchema>>({
+    // * ****** content form ******
+    const contentForm = useForm<ContentFormValues>({
         resolver: zodResolver(contentFormSchema),
         defaultValues: {
             content: "متن قرار داد ...."
         }
     })
 
-    const insertForm = useForm<z.infer<typeof insertFormSchema>>({
+    type ContentFormValues = z.infer<typeof contentFormSchema>
+
+    const handleSubmitContent = (data: ContentFormValues) => {
+
+        console.log(data)
+    }
+    // * ****** content form ******
+
+    // ! ****** insert form ******
+    const insertForm = useForm<InsertFormValues>({
         resolver: zodResolver(insertFormSchema),
         mode: "onChange"
     })
@@ -48,18 +65,31 @@ export const ControlContractProvider = (props: { children: React.ReactNode }) =>
         control: insertForm.control,
     })
 
+    const handleSubmitInsert = (data: InsertFormValues) => {
+
+        console.log(data)
+
+    }
+    // ! ****** insert form ******
+
+
     return <ControlContractContext.Provider
         value={{
             content: {
                 form: contentForm,
                 formSchema: contentFormSchema,
+                onSubmit: handleSubmitContent
             },
             insert: {
                 form: insertForm,
                 schema: insertFormSchema,
-                fieldArray
+                fieldArray,
+                onSubmit: handleSubmitInsert
             }
-        }}>{props.children}</ControlContractContext.Provider>
+        }}
+    >
+        {props.children}
+    </ControlContractContext.Provider>
 }
 
 

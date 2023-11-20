@@ -2,7 +2,6 @@
 
 import React from 'react';
 import {Button} from "@/components/ui/button";
-import {z} from "zod";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {CounterClockwiseClockIcon} from "@radix-ui/react-icons";
 import useControlContract
@@ -13,13 +12,8 @@ const ContractContact = () => {
 
     const controlContract = useControlContract()
 
-    const {form, formSchema} = controlContract.content
-
-    function onSubmit(values: z.infer<typeof formSchema>) {
-
-        console.log(values)
-    }
-
+    const {form, onSubmit} = controlContract.content
+    
     return (
         <>
             <Form {...form}>
