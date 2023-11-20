@@ -5,9 +5,9 @@ import {Button} from "@/components/ui/button";
 import {z} from "zod";
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {CounterClockwiseClockIcon} from "@radix-ui/react-icons";
-import {Textarea} from "@/components/ui/textarea";
 import useControlContract
     from "@/components/client-component/AccountCreateContractClient/state-managment/useControlContract";
+import {Editor} from "@/components/ui/editor";
 
 const ContractContact = () => {
 
@@ -29,12 +29,7 @@ const ContractContact = () => {
                             <FormItem>
                                 <FormLabel>متن قرارداد</FormLabel>
                                 <FormControl>
-                                    <Textarea
-                                        {...field}
-                                        placeholder="We're writing to [inset]. Congrats from OpenAI!"
-                                        style={{direction: "rtl"}}
-                                        className="h-full min-h-[300px] lg:min-h-[700px] xl:min-h-[700px] text-right"
-                                    />
+                                    <Editor {...field as any} />
                                 </FormControl>
                                 <FormMessage/>
                             </FormItem>

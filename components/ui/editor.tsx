@@ -1,52 +1,51 @@
 import * as React from "react"
-import {useRef, useState} from "react"
-import {Editor as TinyEditor} from "@tinymce/tinymce-react";
-import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
+import {ControllerRenderProps} from "react-hook-form";
+import {Editor as TinyEditor} from "@tinymce/tinymce-react";
 
-interface EditorProps {
-    "name": string,
-    "value": string,
-    onChange: (events: any) => any
+interface OnchangeProps {
+    readonly type: string,
+    readonly target: any,
+    readonly isDefaultPrevented: () => boolean,
+    readonly preventDefault: () => void,
+    readonly isPropagationStopped: () => boolean,
+    readonly stopPropagation: () => void,
+    readonly isImmediatePropagationStopped: () => boolean,
+    readonly stopImmediatePropagation: () => void,
+    lastLevel: {
+        type: string,
+        content: string,
+    }
 }
 
-const Editor = ({field}: { field: EditorProps }) => {
+const Editor = React.forwardRef((props: ControllerRenderProps & HTMLInputElement) => {
 
-    const editorRef = useRef<any>(null);
-
-    const [state, setState] = useState()
-
-    return (
-        <>
-            <TinyEditor
-                onInit={(evt, editor) => editorRef.current = editor}
-                tinymceScriptSrc={'/tinymce/tinymce.min.js'}
-                // initialValue='<p>This is the initial content of the editor.</p>'
-                init={{
-                    height: 500,
-                    menubar: false,
-                    plugins: [
-                        'advlist', 'autolink', 'lists', 'link', 'image', 'charmap',
-                        'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-                        'insertdatetime', 'media', 'table', 'preview', 'help', 'wordcount'
-                    ],
-                    toolbar: 'undo redo | blocks | ' +
-                        'bold italic forecolor | alignleft aligncenter ' +
-                        'alignright alignjustify | bullist numlist outdent indent | ' +
-                        'removeformat | help',
-                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-                }}
-                onChange={(e: any) => field.onChange(e.lastLevel.content)}
-            />
-            <Input value={field.value}/>
-            <Button onClick={() => {
-                field.onChange("lsdjfalkjfds")
-            }}>
-                test
-            </Button>
-        </>
-    )
-}
+    return <>
+        <TinyEditor
+            tinymceScriptSrc={'/tinymce/tinymce.min.js'}
+            initialValue={props.value}
+            onChange={(t: any) => props.onChange(t.level.content)}
+            init={{
+                height: 500,
+                menubar: false,
+                language: "fa",
+                ui_mode: "split",
+                directionality: "rtl",
+                placeholder: props.placeholder,
+                plugins: [
+                    'advlist autolink lists link image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount'
+                ],
+                toolbar: 'undo redo | formatselect | ' +
+                    'bold italic backcolor | alignleft aligncenter ' +
+                    'alignright alignjustify | bullist numlist outdent indent | ' +
+                    'removeformat ',
+                content_style: `body { font-family: "IRANSansfanum" !important; font-size:14px !important; direction: rtl !important;text-align: right }`,
+            }}
+        />
+    </>
+})
 
 Editor.displayName = "Input"
 
