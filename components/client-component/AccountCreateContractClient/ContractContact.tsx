@@ -11,7 +11,9 @@ import {Editor} from "@/components/ui/editor";
 
 const ContractContact = () => {
 
-    const {contentForm: form, contentFormSchema: formSchema} = useControlContract()
+    const controlContract = useControlContract()
+
+    const {form, formSchema} = controlContract.content
 
     function onSubmit(values: z.infer<typeof formSchema>) {
 

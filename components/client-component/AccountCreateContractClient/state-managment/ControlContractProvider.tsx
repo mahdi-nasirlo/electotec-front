@@ -4,8 +4,10 @@ import {z} from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
 
 interface ControlContractType {
-    contentForm: UseFormReturn<{ content: string; }, any, undefined>,
-    contentFormSchema: z.ZodObject<{ content: z.ZodString }>,
+    content: {
+        form: UseFormReturn<{ content: string; }, any, undefined>,
+        formSchema: z.ZodObject<{ content: z.ZodString }>
+    },
     insert: {
         form: UseFormReturn<any>,
         schema: z.ZodObject<any>,
@@ -48,8 +50,10 @@ export const ControlContractProvider = (props: { children: React.ReactNode }) =>
 
     return <ControlContractContext.Provider
         value={{
-            contentForm,
-            contentFormSchema,
+            content: {
+                form: contentForm,
+                formSchema: contentFormSchema,
+            },
             insert: {
                 form: insertForm,
                 schema: insertFormSchema,
