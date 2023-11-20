@@ -3,21 +3,6 @@ import {Input} from "@/components/ui/input";
 import {ControllerRenderProps} from "react-hook-form";
 import {Editor as TinyEditor} from "@tinymce/tinymce-react";
 
-interface OnchangeProps {
-    readonly type: string,
-    readonly target: any,
-    readonly isDefaultPrevented: () => boolean,
-    readonly preventDefault: () => void,
-    readonly isPropagationStopped: () => boolean,
-    readonly stopPropagation: () => void,
-    readonly isImmediatePropagationStopped: () => boolean,
-    readonly stopImmediatePropagation: () => void,
-    lastLevel: {
-        type: string,
-        content: string,
-    }
-}
-
 const Editor = React.forwardRef((props: ControllerRenderProps & HTMLInputElement) => {
 
     return <>
@@ -33,14 +18,13 @@ const Editor = React.forwardRef((props: ControllerRenderProps & HTMLInputElement
                 directionality: "rtl",
                 placeholder: props.placeholder,
                 plugins: [
-                    'advlist autolink lists link image charmap print preview anchor',
-                    'searchreplace visualblocks code fullscreen',
-                    'insertdatetime media table paste code help wordcount'
+                    'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'export',
+                    'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
+                    'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'wordcount'
                 ],
-                toolbar: 'undo redo | formatselect | ' +
-                    'bold italic backcolor | alignleft aligncenter ' +
-                    'alignright alignjustify | bullist numlist outdent indent | ' +
-                    'removeformat ',
+                toolbar: 'undo redo | casechange blocks | bold italic backcolor | ' +
+                    'alignleft aligncenter alignright alignjustify | ' +
+                    'bullist numlist checklist outdent indent | removeformat | a11ycheck code table',
                 content_style: `body { font-family: "IRANSansfanum" !important; font-size:14px !important; direction: rtl !important;text-align: right }`,
             }}
         />
