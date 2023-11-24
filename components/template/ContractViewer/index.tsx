@@ -5,6 +5,8 @@ import useContract from "@/components/client-component/AccountCreateContractClie
 import Logo from "@/components/ui/logo";
 import Image from "next/image";
 
+const pageHeight = "1000px"
+
 const Index = () => {
 
     const controlContract = useContract()
@@ -15,8 +17,9 @@ const Index = () => {
         <div
             className="bg-gray-50 py-10"
         >
-            <div className="bg-white rounded-md shadow max-w-4xl mx-auto min-h-[900px]">
-                <div className="flex flex-col justify-between min-h-[900px]">
+            <div style={{minHeight: pageHeight}}
+                 className={`bg-white rounded-md shadow max-w-4xl mx-auto min-h-[${pageHeight}]`}>
+                <div style={{minHeight: pageHeight}} className={`flex flex-col justify-between min-h-[${pageHeight}]`}>
                     <div>
                         <div>
                             <Image alt="" src="/icons/header_shape.svg" width={25} height={25} className="w-full"/>
@@ -34,6 +37,7 @@ const Index = () => {
                                 </div>
                             </div>
                             <div className="h-fit">
+                                {/*@ts-ignore*/}
                                 <div dangerouslySetInnerHTML={{__html: content}}/>
                             </div>
                         </div>

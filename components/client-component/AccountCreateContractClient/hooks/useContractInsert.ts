@@ -53,13 +53,11 @@ const useContractInsert = (): ContractInsertType => {
 
     const getLastData = () => {
 
-        let data = localStorage.getItem(storageKey)
+        let data = localStorage.getItem(storageKey) || ""
 
-        data = JSON.parse(data)
+        let result: { values: any } = JSON.parse(data)
 
-        console.log(data)
-
-        form.setValue("values", data?.values)
+        form.setValue("values", result?.values)
 
     }
 

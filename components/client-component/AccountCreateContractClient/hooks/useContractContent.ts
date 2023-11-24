@@ -2,7 +2,6 @@ import {useForm, UseFormReturn} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {z} from "zod";
 import {useToast} from "@/components/ui/use-toast";
-import * as DOMPurify from 'dompurify';
 
 const useContractContent = (): ContractContentType => {
 
@@ -36,17 +35,17 @@ const useContractContent = (): ContractContentType => {
 
     const getLastData = () => {
 
-        let data = localStorage.getItem(storageKey)
+        let data = localStorage.getItem(storageKey) || ""
 
-        data = JSON.parse(data)
+        let result: { content: string } = JSON.parse(data)
 
-        console.log(data)
-
-        form.setValue("content", data?.content)
+        form.setValue("content", result?.content)
 
     }
 
-    const getContent = () => DOMPurify.sanitize(form.getValues("content"))
+    // const getContent = () => DOMPurify.sanitize(form.getValues("content"))
+
+    const getContent = () => form.getValues("content")
 
     return {
         form,

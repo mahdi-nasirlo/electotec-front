@@ -4,6 +4,8 @@ import Providers from "@/providers/query-client-provider";
 import Header from "@/components/layouts/header";
 import MainContainer from "@/components/layouts/main-container";
 import {Toaster} from "@/components/ui/toaster";
+import {Toaster as HotToaster} from 'react-hot-toast';
+
 
 export const metadata: Metadata = {
     title: 'Create Next App',
@@ -24,6 +26,7 @@ export default function RootLayout({
                 {children}
             </MainContainer>
             <Toaster/>
+            <HotToaster/>
         </Providers>
         </body>
         </html>
