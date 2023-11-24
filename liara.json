@@ -1,3 +1,9 @@
 {
-  "app": "electotec-front"
+  "app": "electotec-front",
+  "disks": [
+    {
+      "name": "tinymce",
+      "mountTo": "/app/public/tinymce"
+    }
+  ]
 }
