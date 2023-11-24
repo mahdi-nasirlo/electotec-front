@@ -7,7 +7,8 @@ type Props = {
     headers?: HeadersInit;
     method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
     cache?: RequestCache;
-    tokenFromServerSide?: string
+    tokenFromServerSide?: string,
+    token?: string
 }
 
 export const API_URL = `${process.env['NEXT_PUBLIC_BACK_END_URL']}/api`
@@ -26,7 +27,7 @@ async function customFetch(props: Props) {
         headers,
         method,
         cache,
-        tokenFromServerSide
+        token,
     } = props
 
     // const token = tokenFromServerSide ?  tokenFromServerSide  : getToken()
@@ -34,7 +35,7 @@ async function customFetch(props: Props) {
     const finalUrl = getUrlWithParams(path, params)
 
     const apiDestination = absolute ? path : apiAddressCreator(finalUrl)
-
+    
     const res = await fetch(
         apiDestination
         ,
@@ -42,7 +43,7 @@ async function customFetch(props: Props) {
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
-                // ...token && {Authorization: `Bearer ${token}`},
+                Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
                 ...headers
             },
             method: method || 'GET',

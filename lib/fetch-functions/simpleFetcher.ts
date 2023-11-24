@@ -11,7 +11,9 @@ const simpleFetcher = async (props: QueryFunctionContext) => {
     } else
         url = props.queryKey
 
-    return await axiosFetcher({url, data, notify: true})
+    const res = await axiosFetcher({url, data, notify: false})
+
+    return res.data
 };
 
 export default simpleFetcher;

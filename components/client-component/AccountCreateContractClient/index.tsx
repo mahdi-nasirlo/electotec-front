@@ -7,12 +7,13 @@ import {PencilLineIcon} from "lucide-react";
 import ControlContractProvider
     from "@/components/client-component/AccountCreateContractClient/provider/ControlContractProvider";
 import {PresetSave} from "@/components/client-component/AccountCreateContractClient/PresetSave";
-import {PresetShare} from "@/components/client-component/AccountCreateContractClient/PresetShare";
 import ContractViewer from "@/components/template/ContractViewer";
 import ContractContact from "@/components/client-component/AccountCreateContractClient/ContractContact";
 import ContractInsert from "@/components/client-component/AccountCreateContractClient/ContractInsert";
 import useContract from "@/components/client-component/AccountCreateContractClient/hooks/useContract";
 import RestoreButton from "@/components/client-component/AccountCreateContractClient/RestoreButton";
+import PresetSelector from "@/components/client-component/AccountCreateContractClient/PresetSelector";
+import {PresetShare} from "@/components/client-component/AccountCreateContractClient/PresetShare";
 
 
 export default function Index() {
@@ -27,6 +28,7 @@ export default function Index() {
                         className="container flex flex-col items-start justify-between space-y-2 py-4 sm:flex-row sm:items-center sm:space-y-0 md:h-16">
                         <h2 className="text-lg font-semibold">قرارداد</h2>
                         <div className="ml-auto flex w-full gap-2 sm:justify-end">
+                            <PresetSelector presets={[]}/>
                             <RestoreButton/>
                             <PresetShare/>
                             <PresetSave/>

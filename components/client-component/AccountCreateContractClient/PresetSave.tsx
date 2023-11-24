@@ -24,7 +24,7 @@ export function PresetSave() {
     return (
         <Dialog open={open} modal={true}>
             <DialogTrigger asChild>
-                <Button variant="secondary" onClick={() => setOpen(true)}>ذخیره نهایی</Button>
+                <Button variant="default" onClick={() => setOpen(true)}>ذخیره نهایی</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[475px]" onClose={() => setOpen(false)}>
                 <DialogHeader>
