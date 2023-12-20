@@ -1,8 +1,10 @@
-import './globals.css'
+import '../globals.css'
 import type {Metadata} from 'next'
 import Providers from "@/providers/query-client-provider";
 import {Toaster} from "@/components/ui/toaster";
 import {Toaster as HotToaster} from 'react-hot-toast';
+import Header from "@/components/layouts/header";
+import MainContainer from "@/components/layouts/main-container";
 
 
 export const metadata: Metadata = {
@@ -19,10 +21,10 @@ export default function RootLayout({
         <html lang="en">
         <body dir="rtl">
         <Providers>
-            {/*<Header/>*/}
-            {/*<MainContainer>*/}
+            <Header/>
+            <MainContainer>
                 {children}
-            {/*</MainContainer>*/}
+            </MainContainer>
             <Toaster/>
             <HotToaster/>
         </Providers>
