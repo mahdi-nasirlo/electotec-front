@@ -4,11 +4,11 @@ import {ChevronLeftIcon, XCircleIcon} from "@heroicons/react/20/solid";
 import {GetDataService} from "@/hook/api/service/useGetServiceByID";
 import {notFound} from "next/navigation";
 import Image from "next/image";
-import ServiceItemScrollArea from "@/app/service/[slug]/components/ServiceItemScrollArea";
 import {Button} from "@/components/ui/button";
 import UserInfoAvatar from "@/components/template/UserInfoAvatar";
 import {CheckCircledIcon} from "@radix-ui/react-icons";
 import {Separator} from "@/components/ui/separator";
+import ServiceItemScrollArea from "@/app/(main)/service/[slug]/components/ServiceItemScrollArea";
 
 interface PropsType {
     params: { slug: string }
