@@ -10,7 +10,7 @@ function Index() {
                 <nav>
                     <div className="relative flex h-16 items-center justify-center">
                         <div className="hidden sm:block absolute left-0">
-                            <div className="flex justify-between items-center">
+                            <div className="flex justify-between items-center space-x-2">
                                 {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
                                 <a
                                     href="#"
@@ -33,7 +33,7 @@ function Index() {
                                 </a>
                                 <Link
                                     href="/account"
-                                    className="transform transition duration-500 hover:scale-105 text-gray-600 hover:bg-gray-100 hover:text-black px-3 pl-0 py-2 rounded-md text-sm font-medium"
+                                    className="transform transition duration-500 hover:scale-105 text-gray-600 hover:bg-gray-100 hover:text-black px-3 py-2 rounded-md text-sm font-medium"
                                 >
                                     پنل کاربری
                                 </Link>

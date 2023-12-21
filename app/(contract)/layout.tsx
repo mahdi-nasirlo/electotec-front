@@ -3,7 +3,6 @@ import type {Metadata} from 'next'
 import Providers from "@/providers/query-client-provider";
 import {Toaster} from "@/components/ui/toaster";
 import {Toaster as HotToaster} from 'react-hot-toast';
-import MainContainer from "@/components/layouts/main-container";
 
 
 export const metadata: Metadata = {
@@ -20,10 +19,7 @@ export default function RootLayout({
         <html lang="en">
         <body dir="rtl">
         <Providers>
-            {/*<Header/>*/}
-            <MainContainer>
                 {children}
-            </MainContainer>
             <Toaster/>
             <HotToaster/>
         </Providers>
